@@ -8,7 +8,9 @@ import jakarta.persistence.*;
 @Table(name = "product_variants")
 public class ProductVariant {
 
-    @Id
+ 
+
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "variant_id")
     private Integer variantId;
@@ -25,8 +27,29 @@ public class ProductVariant {
 
     @Column(name = "stock_quantity", nullable = false)
     private Integer stockQuantity;
+    
+    @Lob // Specifies that the field should be treated as a large object
+    private byte[] image;
+    
+    private String description;
+    
+    public byte[] getImage() {
+ 		return image;
+ 	}
 
-    // Getters and Setters
+ 	public void setImage(byte[] image) {
+ 		this.image = image;
+ 	}
+
+    public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	// Getters and Setters
     public Integer getVariantId() {
         return variantId;
     }
