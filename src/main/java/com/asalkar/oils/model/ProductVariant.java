@@ -1,6 +1,7 @@
 package com.asalkar.oils.model;
 
 import java.math.BigDecimal;
+import java.util.Arrays;
 
 import jakarta.persistence.*;
 
@@ -9,6 +10,13 @@ import jakarta.persistence.*;
 public class ProductVariant {
 
  
+
+	@Override
+	public String toString() {
+		return "ProductVariant [variantId=" + variantId + ", product=" + product + ", quantity=" + quantity + ", price="
+				+ price + ", stockQuantity=" + stockQuantity + ", image=" + Arrays.toString(image) + ", description="
+				+ description + "]";
+	}
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
