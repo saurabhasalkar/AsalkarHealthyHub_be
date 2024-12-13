@@ -16,5 +16,7 @@ public interface ProductVariantRepo  extends JpaRepository<ProductVariant, Integ
 
 	ProductVariant getVariantByVariantId(Integer variantId);
 	
+	ProductVariant findByvariantId(Integer variantid);
+	
 
 }
