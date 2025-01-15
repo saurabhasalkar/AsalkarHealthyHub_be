@@ -17,7 +17,7 @@ import com.asalkar.oils.model.User;
 import com.asalkar.oils.services.UserService;
 
 @RestController
-@CrossOrigin("*")
+@CrossOrigin("http://localhost:3000")
 public class UserController {
 	
 	@Autowired
