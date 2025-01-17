@@ -23,8 +23,8 @@ public class User {
     @Column(name = "google_auth", nullable = false)
     private boolean googleAuth;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Cart> cartItems;
+    @OneToMany(mappedBy = "userId", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<CartItem> cartItems;
 
     // Constructors
     public User() {}
@@ -77,11 +77,11 @@ public class User {
         this.googleAuth = googleAuth;
     }
 
-    public List<Cart> getCartItems() {
+    public List<CartItem> getCartItems() {
         return cartItems;
     }
 
-    public void setCartItems(List<Cart> cartItems) {
+    public void setCartItems(List<CartItem> cartItems) {
         this.cartItems = cartItems;
     }
 }

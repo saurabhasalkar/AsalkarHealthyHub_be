@@ -3,7 +3,9 @@ package com.asalkar.oils.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,6 +17,7 @@ import com.asalkar.oils.model.Product;
 import com.asalkar.oils.model.ProductVariant;
 import com.asalkar.oils.services.ProductService;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 public class ProductController {
 
@@ -22,11 +25,14 @@ public class ProductController {
     private ProductService productservice;
 
     // Endpoint to fetch all products
+    @CrossOrigin(origins = "http://localhost:3000")
+    @Cacheable
     @GetMapping("/products")
     public List<Product> getAllProducts() {
         return  productservice.findAllProducts();
     }
     
+    @Cacheable
     @GetMapping("/productvariants/{productid}")
     public List<ProductVariant> getProductVariantsbyId(@PathVariable("productid") Integer productid)
     {
@@ -43,6 +49,7 @@ public class ProductController {
     
     @GetMapping("/checkStock/{variantId}")
     public StockUpdateRequest checkStock(@PathVariable("variantId")Integer variantId) {
+    	System.out.println("In checkstock controller");
     	return productservice.CheckStock(variantId);
     }
 }
